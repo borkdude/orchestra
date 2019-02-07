@@ -1,1 +1,14 @@
-{:paths ["src/clj/" "src/cljc/" "src/cljs/"]}
+{:paths ["src/clj" "src/cljc" "src/cljs"]
+ :aliases
+ {:test
+  {:extra-paths ["test/clj" "test/cljs" "test/cljc" "cljs-test-runner-out/gen"]
+   :extra-deps {olical/cljs-test-runner {:mvn/version "3.4.0"}
+                com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                           :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}
+                org.clojure/clojurescript {:mvn/version "1.10.516"}
+                expound {:mvn/version "0.7.1"}}}}}
+
+;; run CLJ tests with:
+;; clj -A:test -m cognitect.test-runner
+;; run CLJS tests with:
+;; clj -A:test -m cljs-test-runner.main
